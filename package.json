@@ -1,5 +1,43 @@
 {
-  "dependencies": {
-    "typescript": "^5.0.4"
-  }
+	"name": "hiveapi",
+	"version": "0.0.1",
+	"description": "",
+	"main": "dist/cjs/index.js",
+	"module": "dist/esm/index.js",
+	"umd:main": "dist/umd/index.js",
+	"types": "dist/types/index.d.js",
+	"scripts": {
+		"build": "npm run build:cjs && npm run build:esm && npm run build:types",
+		"build:cjs": "rm -rf ./dist/cjs && tsc -p config/tsconfig.cjs.json",
+		"build:esm": "rm -rf ./dist/esm && tsc -p config/tsconfig.esm.json",
+		"build:types": "rm -rf ./dist/types && tsc -p config/tsconfig.types.json",
+		"clean": "rm -rf ./dist/"
+	},
+	"publishConfig": {
+		"access": "restricted"
+	},
+	"files": [
+		"dist"
+	],
+	"keywords": [
+		"example",
+		"typescript",
+		"npm",
+		"package",
+		"cjs",
+		"esm"
+	],
+	"author": "Alessandro Delass <soudasuwa@proton.me>",
+	"license": "SEE LICENSE IN LICENSE",
+	"homepage": "https://github.com/CryptotechEstonia/hiveapi",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:CryptotechEstonia/hiveapi.git"
+	},
+	"bugs": {
+		"url": "https://github.com/CryptotechEstonia/hiveapi/issues"
+	},
+	"devDependencies": {
+		"typescript": "^5.0.4"
+	}
 }
