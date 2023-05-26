@@ -210,4 +210,8 @@ export class HiveOSAPI {
 		return this.request<FarmsGet>('get', '/farms')
 			.then(result => result.data)
 	}
+
+	async farm(id: number): Promise<Farm> {
+		return this.request<Farm>('get', '/farms/' + id)
+	}
 }

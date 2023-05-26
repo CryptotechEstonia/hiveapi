@@ -160,4 +160,5 @@ export declare class HiveOSAPI {
     constructor(token: string);
     request<T>(method?: string, url?: string): Promise<T>;
     farms(): Promise<Farm[]>;
+    farm(id: number): Promise<Farm>;
 }

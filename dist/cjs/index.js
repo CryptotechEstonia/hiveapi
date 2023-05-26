@@ -75,5 +75,10 @@ class HiveOSAPI {
                 .then(result => result.data);
         });
     }
+    farm(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.request('get', '/farms/' + id);
+        });
+    }
 }
 exports.HiveOSAPI = HiveOSAPI;
