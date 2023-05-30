@@ -207,11 +207,11 @@ export class HiveOSAPI {
 	}
 
 	async farms(): Promise<Farm[]> {
-		return this.request<FarmsGet>('get', '/farms')
+		return this.request<FarmsGet>(`/farms`)
 			.then(result => result.data)
 	}
 
 	async farm(id: number): Promise<Farm> {
-		return this.request<Farm>('get', '/farms/' + id)
+		return this.request<Farm>(`/farms/${id}`)
 	}
 }
