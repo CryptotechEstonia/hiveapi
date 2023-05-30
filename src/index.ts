@@ -23,6 +23,26 @@ export class HiveOSAPIError extends Error {
 	}
 }
 
+export interface MetricsParams {
+	/**
+	 * Format: `yyyy-mm-dd`
+	 * Default: today
+	 */
+	date?: string
+
+	/**
+	 * Period (1 day, 1 week, 1 month)
+	 * Default: 1d
+	 */
+	period?: '1d' | '1w' | '1m'
+
+	/**
+	 * Fill gaps with empty points
+	 * Default: 0
+	 */
+	fill_gaps?: 0 | 1
+}
+
 export class HiveOSAPI {
 	private apiClient: AxiosInstance
 
@@ -35,11 +55,12 @@ export class HiveOSAPI {
 		})
 	}
 
-	async request<T>(url: string = '/', method: string = 'GET'): Promise<T> {
+	async request<T>(url: string = '/', method: string = 'GET', params: object = {}): Promise<T> {
 		try {
 			const response = await this.apiClient.request<T>({
 				method: method,
-				url: url
+				url: url,
+				params: params
 			})
 
 			return response.data
@@ -67,8 +88,8 @@ export class HiveOSAPI {
 			.then(result => result.data || [])
 	}
 
-	async metrics(farm: number, worker: number): Promise<WorkerMetric[]> {
-		return this.request<InlineResponse20028>(`/farms/${farm}/workers/${worker}/metrics`)
+	async metrics(farm: number, worker: number, params: MetricsParams = {}): Promise<WorkerMetric[]> {
+		return this.request<InlineResponse20028>(`/farms/${farm}/workers/${worker}/metrics`, 'GET', params)
 			.then(result => result.data || [])
 	}
 }
