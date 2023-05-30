@@ -188,7 +188,7 @@ export class HiveOSAPI {
 		})
 	}
 
-	async request<T>(url: string = '/', method?: string): Promise<T> {
+	async request<T>(url: string = '/', method: string = 'GET'): Promise<T> {
 		try {
 			const response = await this.apiClient.request<T>({
 				method: method,
