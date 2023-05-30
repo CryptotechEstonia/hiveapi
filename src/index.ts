@@ -15,6 +15,126 @@ export interface FarmsGet {
 	tags: Tag[]
 }
 
+export interface MetricsGet {
+	data: Metric[]
+}
+
+/**
+ * @interface Metric
+ */
+export interface Metric {
+	/**
+	 * @type {number}
+	 * @memberof Metric
+	 */
+	time?: number
+
+	/**
+	 * GPUs or ASIC boards count
+	 * @type {number}
+	 * @memberof Metric
+	 */
+	units?: number
+
+	/**
+	 * Temperature, °C
+	 * @type {number[]}
+	 * @memberof Metric
+	 */
+	temp?: number[]
+
+	/**
+	 * Fan speed
+	 * @type {number[]}
+	 * @memberof Metric
+	 */
+	fan?: number[]
+
+	/**
+	 * Total power draw, watts
+	 * @type {number}
+	 * @memberof Metric
+	 */
+	power?: number
+
+	/**
+	 * Hashrates by algorithm
+	 * @type {Hashrates[]}
+	 * @memberof Metric
+	 */
+	hashrates?: Hashrates[]
+
+	/**
+	 * @type {FanflapStats}
+	 * @memberof Metric
+	 */
+	fanflap?: FanflapStats
+
+	/**
+	 * @type {PowermeterStats}
+	 * @memberof Metric
+	 */
+	powermeter?: PowermeterStats
+}
+
+/**
+ * Powermeter controller stats. Each value is an array containing values from corresponding meter. 
+ * @interface PowermeterStats
+ */
+export interface PowermeterStats {
+	/**
+	 * Current power draw, kilowatts (kW)
+	 * @type {Array<number>[]}
+	 * @memberof PowermeterStats
+	 */
+	power?: Array<number>[]
+
+	/**
+	 * Current total power draw, kilowatts (kW)
+	 * @type {number[]}
+	 * @memberof PowermeterStats
+	 */
+	powerTotal?: number[]
+
+	/**
+	 * Power usage value, kilowatthours (kWh)
+	 * @type {number[]}
+	 * @memberof PowermeterStats
+	 */
+	energyTotal?: number[]
+}
+
+/**
+ * FanFlap controller stats
+ * @interface FanflapStats
+ */
+export interface FanflapStats {
+	/**
+	 * Fan speeds, %
+	 * @type {number[]}
+	 * @memberof FanflapStats
+	 */
+	fan?: number[]
+}
+
+/**
+ * @interface Hashrates
+ */
+export interface Hashrates {
+	/**
+	 * @type {AlgoName}
+	 * @memberof Hashrates
+	 */
+	algo?: string
+
+	/**
+	 * Hashrate
+	 * @type {number[]}
+	 * @memberof Hashrates
+	 */
+	values?: number[]
+}
+
 export interface Farm {
 	id: number
 	name: string
@@ -213,5 +333,10 @@ export class HiveOSAPI {
 
 	async farm(id: number): Promise<Farm> {
 		return this.request<Farm>(`/farms/${id}`)
+	}
+
+	async metrics(farm: number, worker: number): Promise<Metric[]> {
+		return this.request<MetricsGet>(`/farms/${farm}/workers/${worker}/metrics`)
+			.then(result => result.data)
 	}
 }
