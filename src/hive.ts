@@ -2738,12 +2738,12 @@ export interface Farm {
 
 	/**
 	 * Default flight sheets keyed by platform (1 - rig, 2 - asic). These flight sheets will be automatically attached to newly created workers. 
-	 * @type {{ [key: string]: number
- }}
+	 * @type {{ [key: string]: number }}
 	 * @memberof Farm
 	 */
-	defaultFs?: { [key: string]: number
- }
+	defaultFs?: {
+		[key: string]: number
+	}
 }
 
 /**
@@ -2873,12 +2873,12 @@ export interface FarmCreateRequest extends FarmFields {
 
 	/**
 	 * Default flight sheets keyed by platform (1 - rig, 2 - asic). These flight sheets will be automatically attached to newly created workers. 
-	 * @type {{ [key: string]: number
- }}
+	 * @type {{ [key: string]: number }}
 	 * @memberof FarmCreateRequest
 	 */
-	defaultFs?: { [key: string]: number
- }
+	defaultFs?: {
+		[key: string]: number
+	}
 }
 
 /**
@@ -2889,12 +2889,12 @@ export interface FarmCreateRequest extends FarmFields {
 export interface FarmDefaultFS {
 	/**
 	 * Default flight sheets keyed by platform (1 - rig, 2 - asic). These flight sheets will be automatically attached to newly created workers. 
-	 * @type {{ [key: string]: number
- }}
+	 * @type {{ [key: string]: number }}
 	 * @memberof FarmDefaultFS
 	 */
-	defaultFs?: { [key: string]: number
- }
+	defaultFs?: {
+		[key: string]: number
+	}
 }
 
 /**
@@ -4009,12 +4009,12 @@ export interface FarmUpdateRequest extends FarmFields {
 
 	/**
 	 * Default flight sheets keyed by platform (1 - rig, 2 - asic). These flight sheets will be automatically attached to newly created workers. 
-	 * @type {{ [key: string]: number
- }}
+	 * @type {{ [key: string]: number }}
 	 * @memberof FarmUpdateRequest
 	 */
-	defaultFs?: { [key: string]: number
- }
+	defaultFs?: {
+		[key: string]: number
+	}
 }
 
 /**
@@ -4287,12 +4287,12 @@ export interface FarmsfarmIdworkersoverclockGpuData {
 
 	/**
 	 * Options for GPU tweakers
-	 * @type {{ [key: string]: any
- }}
+	 * @type {{ [key: string]: any }}
 	 * @memberof FarmsfarmIdworkersoverclockGpuData
 	 */
-	tweakers?: { [key: string]: any
- }
+	tweakers?: {
+		[key: string]: any
+	}
 }
 
 /**
@@ -5922,12 +5922,12 @@ export interface InlineResponse20049 {
 
 	/**
 	 * Pools list by coin
-	 * @type {{ [key: string]: string[]
- }}
+	 * @type {{ [key: string]: string[] }}
 	 * @memberof InlineResponse20049
 	 */
-	coins?: { [key: string]: string[]
- }
+	coins?: {
+		[key: string]: string[]
+	}
 }
 
 /**
@@ -7004,12 +7004,12 @@ export interface InlineResponse422 {
 
 	/**
 	 * Errors by field
-	 * @type {{ [key: string]: string[]
- }}
+	 * @type {{ [key: string]: string[] }}
 	 * @memberof InlineResponse422
 	 */
-	errors?: { [key: string]: string[]
- }
+	errors?: {
+		[key: string]: string[]
+	}
 }
 
 /**
@@ -12240,12 +12240,12 @@ export interface PoolTemplateProps {
 
 	/**
 	 * Miner config templates keyed by miner name
-	 * @type {{ [key: string]: any
- }}
+	 * @type {{ [key: string]: any }}
 	 * @memberof PoolTemplateProps
 	 */
-	miners?: { [key: string]: any
- }
+	miners?: {
+		[key: string]: any
+	}
 
 	/**
 	 * Is stratum ping supported by this pool for this coin
@@ -14916,12 +14916,12 @@ export interface Worker {
 
 	/**
 	 * Settings for ASICs with Hive firmware, depends on model and firmware version
-	 * @type {{ [key: string]: string
- }}
+	 * @type {{ [key: string]: string }}
 	 * @memberof Worker
 	 */
-	asicConfig?: { [key: string]: string
- }
+	asicConfig?: {
+		[key: string]: string
+	}
 }
 
 /**
@@ -14962,12 +14962,12 @@ export interface WorkerActive {
 export interface WorkerAsicConfig {
 	/**
 	 * Settings for ASICs with Hive firmware, depends on model and firmware version
-	 * @type {{ [key: string]: string
- }}
+	 * @type {{ [key: string]: string }}
 	 * @memberof WorkerAsicConfig
 	 */
-	asicConfig?: { [key: string]: string
- }
+	asicConfig?: {
+		[key: string]: string
+	}
 }
 
 /**
@@ -15708,12 +15708,12 @@ export interface WorkerCreateRequest extends WorkerFields {
 
 	/**
 	 * Settings for ASICs with Hive firmware, depends on model and firmware version
-	 * @type {{ [key: string]: string
- }}
+	 * @type {{ [key: string]: string }}
 	 * @memberof WorkerCreateRequest
 	 */
-	asicConfig?: { [key: string]: string
- }
+	asicConfig?: {
+		[key: string]: string
+	}
 }
 
 /**
@@ -16001,9 +16001,8 @@ export interface WorkerEditRequest extends WorkerFields {
 
 	/**
 	 * Update mode for tags * add - add spicified tags ignoring if already assigned
- * remove - remove spicified tags if assigned
- * replace - replace all assigned tags with specified ones
- 
+	 * remove - remove spicified tags if assigned
+	 * replace - replace all assigned tags with specified ones
 	 * @type {string}
 	 * @memberof WorkerEditRequest
 	 */
@@ -16165,12 +16164,12 @@ export interface WorkerEditRequest extends WorkerFields {
 
 	/**
 	 * Settings for ASICs with Hive firmware, depends on model and firmware version
-	 * @type {{ [key: string]: string
- }}
+	 * @type {{ [key: string]: string }}
 	 * @memberof WorkerEditRequest
 	 */
-	asicConfig?: { [key: string]: string
- }
+	asicConfig?: {
+		[key: string]: string
+	}
 }
 
 /**
@@ -17283,12 +17282,12 @@ export interface WorkerListItem {
 
 	/**
 	 * Settings for ASICs with Hive firmware, depends on model and firmware version
-	 * @type {{ [key: string]: string
- }}
+	 * @type {{ [key: string]: string }}
 	 * @memberof WorkerListItem
 	 */
-	asicConfig?: { [key: string]: string
- }
+	asicConfig?: {
+		[key: string]: string
+	}
 
 	/**
 	 * 
@@ -18123,12 +18122,12 @@ export interface WorkerMultiEditRequest extends WorkerActive {
 
 	/**
 	 * Settings for ASICs with Hive firmware, depends on model and firmware version
-	 * @type {{ [key: string]: string
- }}
+	 * @type {{ [key: string]: string }}
 	 * @memberof WorkerMultiEditRequest
 	 */
-	asicConfig?: { [key: string]: string
- }
+	asicConfig?: {
+		[key: string]: string
+	}
 }
 
 /**
