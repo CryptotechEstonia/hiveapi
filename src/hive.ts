@@ -16718,6 +16718,8 @@ export interface WorkerIpAddresses {
  * @interface Worker
  */
 export interface Worker {
+	id: number
+
 	/**
 	 * 
 	 * @type {Platform}
