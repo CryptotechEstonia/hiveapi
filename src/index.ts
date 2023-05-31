@@ -1,6 +1,6 @@
 import type {
 	InlineResponse20012,
-	InlineResponse20021, WorkerListItem,
+	InlineResponse20021, Worker,
 	Farm,
 	InlineResponse20028, WorkerMetric
 } from './hive'
@@ -83,7 +83,7 @@ export class HiveOSAPI {
 		return this.request<Farm>(`/farms/${id}`)
 	}
 
-	async workers(farm: number): Promise<WorkerListItem[]> {
+	async workers(farm: number): Promise<Worker[]> {
 		return this.request<InlineResponse20021>(`/farms/${farm}/workers`)
 			.then(result => result.data || [])
 	}
