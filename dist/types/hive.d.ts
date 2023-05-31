@@ -2864,13 +2864,6 @@ export interface FarmId {
 /**
  *
  * @export
- * @interface FarmListItem
- */
-export interface FarmListItem {
-}
-/**
- *
- * @export
  * @interface FarmMetric
  */
 export interface FarmMetric {
@@ -4558,10 +4551,10 @@ export declare namespace InlineResponse20011Data {
 export interface InlineResponse20012 {
     /**
      *
-     * @type {FarmListItem[]}
+     * @type {Farm[]}
      * @memberof InlineResponse20012
      */
-    data?: FarmListItem[];
+    data?: Farm[];
     /**
      * Tags that are used by returned farms
      * @type {TagU[]}

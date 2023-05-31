@@ -1,5 +1,5 @@
 import type {
-	InlineResponse20012, FarmListItem,
+	InlineResponse20012,
 	InlineResponse20021, WorkerListItem,
 	Farm,
 	InlineResponse20028, WorkerMetric
@@ -74,7 +74,7 @@ export class HiveOSAPI {
 		}
 	}
 
-	async farms(): Promise<FarmListItem[]> {
+	async farms(): Promise<Farm[]> {
 		return this.request<InlineResponse20012>(`/farms`)
 			.then(result => result.data || [])
 	}
