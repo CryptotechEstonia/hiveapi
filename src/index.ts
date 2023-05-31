@@ -6,6 +6,7 @@ import type {
 } from './hive'
 
 import axios, { AxiosError, AxiosInstance } from 'axios'
+import axiosRetry from 'axios-retry'
 
 const API_ROOT = 'https://api2.hiveos.farm/api/v2/'
 
@@ -52,6 +53,13 @@ export class HiveOSAPI {
 			headers: {
 				'Authorization': `Bearer ${this.token}`,
 			},
+		})
+
+		axiosRetry(this.apiClient, {
+			retries: 3,
+			retryDelay: (retryCount) => {
+				return retryCount * 1000
+			}
 		})
 	}
 
