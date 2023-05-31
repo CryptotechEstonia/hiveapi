@@ -22,15 +22,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HiveOSAPI = exports.HiveOSAPIError = void 0;
 const axios_1 = __importStar(require("axios"));
@@ -51,34 +42,36 @@ class HiveOSAPI {
             },
         });
     }
-    request(method, url) {
-        var _a;
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.apiClient.request({
-                    method: method,
-                    url: url
-                });
-                return response.data;
-            }
-            catch (error) {
-                console.error(error);
-                if (error instanceof axios_1.AxiosError)
-                    throw new HiveOSAPIError((_a = error.response) === null || _a === void 0 ? void 0 : _a.data);
-                throw error;
-            }
-        });
+    async request(url = '/', method = 'GET', params = {}) {
+        try {
+            const response = await this.apiClient.request({
+                method: method,
+                url: url,
+                params: params
+            });
+            return response.data;
+        }
+        catch (error) {
+            console.error(error);
+            if (error instanceof axios_1.AxiosError)
+                throw new HiveOSAPIError(error.response?.data);
+            throw error;
+        }
     }
-    farms() {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.request('get', '/farms')
-                .then(result => result.data);
-        });
+    async farms() {
+        return this.request(`/farms`)
+            .then(result => result.data || []);
     }
-    farm(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.request('get', '/farms/' + id);
-        });
+    async farm(id) {
+        return this.request(`/farms/${id}`);
+    }
+    async workers(farm) {
+        return this.request(`/farms/${farm}/workers`)
+            .then(result => result.data || []);
+    }
+    async metrics(farm, worker, params = {}) {
+        return this.request(`/farms/${farm}/workers/${worker}/metrics`, 'GET', params)
+            .then(result => result.data || []);
     }
 }
 exports.HiveOSAPI = HiveOSAPI;
