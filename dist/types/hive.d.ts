@@ -2195,6 +2195,7 @@ export interface FanflapStats {
  * @interface Farm
  */
 export interface Farm {
+    id: number;
     /**
      * Display name
      * @type {string}
@@ -2443,8 +2444,7 @@ export interface Farm {
     autoTags?: boolean;
     /**
      * Default flight sheets keyed by platform (1 - rig, 2 - asic). These flight sheets will be automatically attached to newly created workers.
-     * @type {{ [key: string]: number
- }}
+     * @type {{ [key: string]: number }}
      * @memberof Farm
      */
     defaultFs?: {
@@ -2565,8 +2565,7 @@ export interface FarmCreateRequest extends FarmFields {
     autoTags?: boolean;
     /**
      * Default flight sheets keyed by platform (1 - rig, 2 - asic). These flight sheets will be automatically attached to newly created workers.
-     * @type {{ [key: string]: number
- }}
+     * @type {{ [key: string]: number }}
      * @memberof FarmCreateRequest
      */
     defaultFs?: {
@@ -2581,8 +2580,7 @@ export interface FarmCreateRequest extends FarmFields {
 export interface FarmDefaultFS {
     /**
      * Default flight sheets keyed by platform (1 - rig, 2 - asic). These flight sheets will be automatically attached to newly created workers.
-     * @type {{ [key: string]: number
- }}
+     * @type {{ [key: string]: number }}
      * @memberof FarmDefaultFS
      */
     defaultFs?: {
@@ -3565,8 +3563,7 @@ export interface FarmUpdateRequest extends FarmFields {
     autoTags?: boolean;
     /**
      * Default flight sheets keyed by platform (1 - rig, 2 - asic). These flight sheets will be automatically attached to newly created workers.
-     * @type {{ [key: string]: number
- }}
+     * @type {{ [key: string]: number }}
      * @memberof FarmUpdateRequest
      */
     defaultFs?: {
@@ -3813,8 +3810,7 @@ export interface FarmsfarmIdworkersoverclockGpuData {
     nvidia?: FarmsfarmIdworkersoverclockNvidia;
     /**
      * Options for GPU tweakers
-     * @type {{ [key: string]: any
- }}
+     * @type {{ [key: string]: any }}
      * @memberof FarmsfarmIdworkersoverclockGpuData
      */
     tweakers?: {
@@ -4749,10 +4745,10 @@ export interface InlineResponse20020User {
 export interface InlineResponse20021 {
     /**
      *
-     * @type {WorkerListItem[]}
+     * @type {Worker[]}
      * @memberof InlineResponse20021
      */
-    data?: WorkerListItem[];
+    data?: Worker[];
     /**
      * Tags that are used by returned workers
      * @type {TagF[]}
@@ -5284,8 +5280,7 @@ export interface InlineResponse20049 {
     pools?: InlineResponse20049Pools[];
     /**
      * Pools list by coin
-     * @type {{ [key: string]: string[]
- }}
+     * @type {{ [key: string]: string[] }}
      * @memberof InlineResponse20049
      */
     coins?: {
@@ -6258,8 +6253,7 @@ export interface InlineResponse422 {
     message?: string;
     /**
      * Errors by field
-     * @type {{ [key: string]: string[]
- }}
+     * @type {{ [key: string]: string[] }}
      * @memberof InlineResponse422
      */
     errors?: {
@@ -10845,8 +10839,7 @@ export interface PoolTemplateProps {
     servers?: PoolTemplatePropsServers[];
     /**
      * Miner config templates keyed by miner name
-     * @type {{ [key: string]: any
- }}
+     * @type {{ [key: string]: any }}
      * @memberof PoolTemplateProps
      */
     miners?: {
@@ -13216,28 +13209,12 @@ export interface Worker {
     benchmarkId?: number;
     /**
      * Settings for ASICs with Hive firmware, depends on model and firmware version
-     * @type {{ [key: string]: string
- }}
+     * @type {{ [key: string]: string }}
      * @memberof Worker
      */
     asicConfig?: {
         [key: string]: string;
     };
-}
-/**
- * @export
- * @namespace Worker
- */
-export declare namespace Worker {
-    /**
-     * @export
-     * @enum {string}
-     */
-    enum SystemTypeEnum {
-        Linux = "linux",
-        Asic = "asic",
-        Windows = "windows"
-    }
 }
 /**
  *
@@ -13260,8 +13237,7 @@ export interface WorkerActive {
 export interface WorkerAsicConfig {
     /**
      * Settings for ASICs with Hive firmware, depends on model and firmware version
-     * @type {{ [key: string]: string
- }}
+     * @type {{ [key: string]: string }}
      * @memberof WorkerAsicConfig
      */
     asicConfig?: {
@@ -13923,8 +13899,7 @@ export interface WorkerCreateRequest extends WorkerFields {
     windtankAutofan?: WorkerWindtankAutofanWindtankAutofan;
     /**
      * Settings for ASICs with Hive firmware, depends on model and firmware version
-     * @type {{ [key: string]: string
- }}
+     * @type {{ [key: string]: string }}
      * @memberof WorkerCreateRequest
      */
     asicConfig?: {
@@ -14193,9 +14168,8 @@ export interface WorkerEditRequest extends WorkerFields {
     tagIds?: number[];
     /**
      * Update mode for tags * add - add spicified tags ignoring if already assigned
- * remove - remove spicified tags if assigned
- * replace - replace all assigned tags with specified ones
- 
+     * remove - remove spicified tags if assigned
+     * replace - replace all assigned tags with specified ones
      * @type {string}
      * @memberof WorkerEditRequest
      */
@@ -14334,8 +14308,7 @@ export interface WorkerEditRequest extends WorkerFields {
     windtankAutofan?: WorkerWindtankAutofanWindtankAutofan;
     /**
      * Settings for ASICs with Hive firmware, depends on model and firmware version
-     * @type {{ [key: string]: string
- }}
+     * @type {{ [key: string]: string }}
      * @memberof WorkerEditRequest
      */
     asicConfig?: {
@@ -14847,482 +14820,481 @@ export interface WorkerIpAddresses {
 /**
  *
  * @export
- * @interface WorkerListItem
+ * @interface Worker
  */
-export interface WorkerListItem {
+export interface Worker {
     /**
      *
      * @type {Platform}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     platform?: Platform;
     /**
      * Display name
      * @type {string}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     name?: string;
     /**
      *
      * @type {string}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     description?: string;
     /**
      * Amount of GPUs/Boards
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     unitsCount?: number;
     /**
      * Amount of installed fans (for ASICs)
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     fansCount?: number;
     /**
      *
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     active?: boolean;
     /**
      *
      * @type {string}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     password?: string;
     /**
      *
      * @type {number[]}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     tagIds?: number[];
     /**
      *
      * @type {MirrorUrl}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     mirrorUrl?: MirrorUrl;
     /**
      *
      * @type {RepoUrl[]}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     repoUrls?: RepoUrl[];
     /**
      * Red Temperature, °C
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     redTemp?: number;
     /**
      * Red memory temperature (for rigs), °C
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     redMemTemp?: number;
     /**
      * Red CPU temperature (for rigs), °C
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     redCpuTemp?: number;
     /**
      * Red Board Temperature (for ASICs), °C
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     redBoardTemp?: number;
     /**
      * Red Fan speed, %
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     redFan?: number;
     /**
      * Red Accepted Shares Ratio, %
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     redAsr?: number;
     /**
      * Red Load Average per one CPU core
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     redLa?: number;
     /**
      * Red hashrates per algo
      * @type {FarmHashratesHashrates[]}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     redHashrates?: FarmHashratesHashrates[];
     /**
      * List of assigned ip addresses
      * @type {string[]}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     ipAddresses?: string[];
     /**
      *
      * @type {WorkerRemoteAddressRemoteAddress}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     remoteAddress?: WorkerRemoteAddressRemoteAddress;
     /**
      * VPN is configured
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     vpn?: boolean;
     /**
      * Worker has AMD GPUs
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasAmd?: boolean;
     /**
      * Worker has Nvidia GPUs
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasNvidia?: boolean;
     /**
      * New OS version is available
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     needsUpgrade?: boolean;
     /**
      * packages_hash
      * @type {string}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     packagesHash?: string;
     /**
      *
      * @type {WorkerPropsLanConfig}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     lanConfig?: WorkerPropsLanConfig;
     /**
      * Hive OS system type
      * @type {string}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
-    systemType?: WorkerListItem.SystemTypeEnum;
+    systemType?: Worker.SystemTypeEnum;
     /**
      *
      * @type {string}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     osName?: string;
     /**
      * Worker has Octominer fan controller
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasOctofan?: boolean;
     /**
      * Worker has Coolbox fan controller
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasCoolbox?: boolean;
     /**
      * Worker has FanFlap controller
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasFanflap?: boolean;
     /**
      * Worker has Powermeter controller
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasPowermeter?: boolean;
     /**
      * Worker is an ASIC Hub
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasAsichub?: boolean;
     /**
      * Worker has installed Donnager Relay controller
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasDonnagerRelay?: boolean;
     /**
      * Worker has installed Ykeda Autofan controller
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasYkedaAutofan?: boolean;
     /**
      * Worker has installed Windtank Autofan controller
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasWindtankAutofan?: boolean;
     /**
      * Worker has installed 8MK_NET Autofan controller
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hasMknetAutofan?: boolean;
     /**
      *
      * @type {FarmPropsPersonalSettings}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     personalSettings?: FarmPropsPersonalSettings;
     /**
      *
      * @type {WorkerVersionsVersions}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     versions?: WorkerVersionsVersions;
     /**
      *
      * @type {WorkerStatsStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     stats?: WorkerStatsStats;
     /**
      *
      * @type {FSMidInfo}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     flightSheet?: FSMidInfo;
     /**
      *
      * @type {WorkerOverclockOverclock}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     overclock?: WorkerOverclockOverclock;
     /**
      * List of miner names from active flight sheet that are tuned in this worker.
      * @type {MinerName[]}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     tunedMiners?: MinerName[];
     /**
      *
      * @type {WorkerMinersSummaryMinersSummary}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     minersSummary?: WorkerMinersSummaryMinersSummary;
     /**
      *
      * @type {WorkerMinersStatsMinersStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     minersStats?: WorkerMinersStatsMinersStats;
     /**
      *
      * @type {WorkerHardwareInfoHardwareInfo}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hardwareInfo?: WorkerHardwareInfoHardwareInfo;
     /**
      *
      * @type {WorkerHardwareStatsHardwareStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hardwareStats?: WorkerHardwareStatsHardwareStats;
     /**
      *
      * @type {WorkerGpuStatsSummaryGpuSummary}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     gpuSummary?: WorkerGpuStatsSummaryGpuSummary;
     /**
      * GPU information
      * @type {GpuInfo[]}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     gpuInfo?: GpuInfo[];
     /**
      * GPU stats
      * @type {any[]}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     gpuStats?: any[];
     /**
      *
      * @type {WorkerAsicInfoAsicInfo}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     asicInfo?: WorkerAsicInfoAsicInfo;
     /**
      * ID of AsicHUB which manages this ASIC
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     asichubId?: number;
     /**
      *
      * @type {WorkerAsicStatsAsicStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     asicStats?: WorkerAsicStatsAsicStats;
     /**
      *
      * @type {WorkerWatchdogWatchdog}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     watchdog?: WorkerWatchdogWatchdog;
     /**
      *
      * @type {WorkerOptionsOptions}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     options?: WorkerOptionsOptions;
     /**
      * Power consumption of worker's hardware, watts
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     hardwarePowerDraw?: number;
     /**
      * Efficiency of power supply unit, %
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     psuEfficiency?: number;
     /**
      * Apply power correction settings to power consumption value from Octominer fan controller. Default is false.
      * @type {boolean}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     octofanCorrectPower?: boolean;
     /**
      *
      * @type {WorkerAutofanAutofan}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     autofan?: WorkerAutofanAutofan;
     /**
      *
      * @type {WorkerOctofanOctofan}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     octofan?: WorkerOctofanOctofan;
     /**
      *
      * @type {WorkerOctofanStatsOctofanStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     octofanStats?: WorkerOctofanStatsOctofanStats;
     /**
      *
      * @type {WorkerCoolboxCoolbox}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     coolbox?: WorkerCoolboxCoolbox;
     /**
      *
      * @type {WorkerMknetAutofanInfoCoolboxInfo}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     coolboxInfo?: WorkerMknetAutofanInfoCoolboxInfo;
     /**
      *
      * @type {WorkerCoolboxStatsCoolboxStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     coolboxStats?: WorkerCoolboxStatsCoolboxStats;
     /**
      *
      * @type {WorkerFanflapFanflap}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     fanflap?: WorkerFanflapFanflap;
     /**
      *
      * @type {FanflapStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     fanflapStats?: FanflapStats;
     /**
      *
      * @type {WorkerPowermeterPowermeter}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     powermeter?: WorkerPowermeterPowermeter;
     /**
      *
      * @type {PowermeterStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     powermeterStats?: PowermeterStats;
     /**
      *
      * @type {WorkerDonnagerRelayDonnagerRelay}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     donnagerRelay?: WorkerDonnagerRelayDonnagerRelay;
     /**
      *
      * @type {WorkerDonnagerRelayInfoDonnagerRelayInfo}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     donnagerRelayInfo?: WorkerDonnagerRelayInfoDonnagerRelayInfo;
     /**
      *
      * @type {WorkerDonnagerRelayStatsDonnagerRelayStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     donnagerRelayStats?: WorkerDonnagerRelayStatsDonnagerRelayStats;
     /**
      *
      * @type {WorkerMknetAutofanYkedaAutofan}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     ykedaAutofan?: WorkerMknetAutofanYkedaAutofan;
     /**
      *
      * @type {WorkerMknetAutofanStatsYkedaAutofanStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     ykedaAutofanStats?: WorkerMknetAutofanStatsYkedaAutofanStats;
     /**
      *
      * @type {WorkerWindtankAutofanWindtankAutofan}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     windtankAutofan?: WorkerWindtankAutofanWindtankAutofan;
     /**
      *
      * @type {WorkerWindtankAutofanInfoWindtankAutofanInfo}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     windtankAutofanInfo?: WorkerWindtankAutofanInfoWindtankAutofanInfo;
     /**
      *
      * @type {WorkerWindtankAutofanStatsWindtankAutofanStats}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     windtankAutofanStats?: WorkerWindtankAutofanStatsWindtankAutofanStats;
     /**
      * Worker queue commands
      * @type {WorkerCommandsCommands[]}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     commands?: WorkerCommandsCommands[];
     /**
      * ID of currently running benchmark. This field is present until the benchmark is finished.
      * @type {number}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     benchmarkId?: number;
     /**
      * Settings for ASICs with Hive firmware, depends on model and firmware version
-     * @type {{ [key: string]: string
- }}
-     * @memberof WorkerListItem
+     * @type {{ [key: string]: string }}
+     * @memberof Worker
      */
     asicConfig?: {
         [key: string]: string;
@@ -15330,15 +15302,15 @@ export interface WorkerListItem {
     /**
      *
      * @type {WorkerMessagesCountMessagesCounts}
-     * @memberof WorkerListItem
+     * @memberof Worker
      */
     messagesCounts?: WorkerMessagesCountMessagesCounts;
 }
 /**
  * @export
- * @namespace WorkerListItem
+ * @namespace Worker
  */
-export declare namespace WorkerListItem {
+export declare namespace Worker {
     /**
      * @export
      * @enum {string}
@@ -16066,8 +16038,7 @@ export interface WorkerMultiEditRequest extends WorkerActive {
     windtankAutofan?: WorkerWindtankAutofanWindtankAutofan;
     /**
      * Settings for ASICs with Hive firmware, depends on model and firmware version
-     * @type {{ [key: string]: string
- }}
+     * @type {{ [key: string]: string }}
      * @memberof WorkerMultiEditRequest
      */
     asicConfig?: {

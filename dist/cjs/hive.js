@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WorkerWatchdogWatchdogOptions = exports.WorkerWatchdogWatchdog = exports.WorkerProps = exports.WorkerMultiEditRequest = exports.WorkerListItem = exports.WorkerEditRequest = exports.WorkerEditOCMode = exports.WorkerEditOC = exports.WorkerCreateRequest = exports.WorkerCoolboxInfoCoolboxInfo = exports.WorkerAutofanAutofan = exports.Worker = exports.WalletBalanceBalance = exports.TransactionTypeFarm = exports.TransactionTypeAccount = exports.TagIdsEdit = exports.ScheduleActionData = exports.RomFields = exports.ReferralCurrency = exports.Problem = exports.Platform = exports.OCUpdateRequest = exports.NotificationFarmEventEnum = exports.NotificationChannelEnum = exports.NotificationAccountEventEnum = exports.MinerName = exports.MessageType = exports.InlineResponse20065Data = exports.InlineResponse20060Data = exports.InlineResponse20011Data = exports.HiveVersion = exports.FarmUpdateRequest = exports.FarmTransferType = exports.Deposit = exports.CommandsEnum = exports.BillingType = exports.ApiKeySource = exports.ApiKeyCreateRequest = exports.ApiKey = exports.AccessRoleEnum = void 0;
+exports.WorkerWatchdogWatchdogOptions = exports.WorkerWatchdogWatchdog = exports.WorkerProps = exports.WorkerMultiEditRequest = exports.Worker = exports.WorkerEditRequest = exports.WorkerEditOCMode = exports.WorkerEditOC = exports.WorkerCreateRequest = exports.WorkerCoolboxInfoCoolboxInfo = exports.WorkerAutofanAutofan = exports.WalletBalanceBalance = exports.TransactionTypeFarm = exports.TransactionTypeAccount = exports.TagIdsEdit = exports.ScheduleActionData = exports.RomFields = exports.ReferralCurrency = exports.Problem = exports.Platform = exports.OCUpdateRequest = exports.NotificationFarmEventEnum = exports.NotificationChannelEnum = exports.NotificationAccountEventEnum = exports.MinerName = exports.MessageType = exports.InlineResponse20065Data = exports.InlineResponse20060Data = exports.InlineResponse20011Data = exports.HiveVersion = exports.FarmUpdateRequest = exports.FarmTransferType = exports.Deposit = exports.CommandsEnum = exports.BillingType = exports.ApiKeySource = exports.ApiKeyCreateRequest = exports.ApiKey = exports.AccessRoleEnum = void 0;
 /**
  * Access role
  * @export
@@ -460,23 +460,6 @@ var WalletBalanceBalance;
 })(WalletBalanceBalance = exports.WalletBalanceBalance || (exports.WalletBalanceBalance = {}));
 /**
  * @export
- * @namespace Worker
- */
-var Worker;
-(function (Worker) {
-    /**
-     * @export
-     * @enum {string}
-     */
-    let SystemTypeEnum;
-    (function (SystemTypeEnum) {
-        SystemTypeEnum["Linux"] = "linux";
-        SystemTypeEnum["Asic"] = "asic";
-        SystemTypeEnum["Windows"] = "windows";
-    })(SystemTypeEnum = Worker.SystemTypeEnum || (Worker.SystemTypeEnum = {}));
-})(Worker = exports.Worker || (exports.Worker = {}));
-/**
- * @export
  * @namespace WorkerAutofanAutofan
  */
 var WorkerAutofanAutofan;
@@ -583,10 +566,10 @@ var WorkerEditRequest;
 })(WorkerEditRequest = exports.WorkerEditRequest || (exports.WorkerEditRequest = {}));
 /**
  * @export
- * @namespace WorkerListItem
+ * @namespace Worker
  */
-var WorkerListItem;
-(function (WorkerListItem) {
+var Worker;
+(function (Worker) {
     /**
      * @export
      * @enum {string}
@@ -596,8 +579,8 @@ var WorkerListItem;
         SystemTypeEnum["Linux"] = "linux";
         SystemTypeEnum["Asic"] = "asic";
         SystemTypeEnum["Windows"] = "windows";
-    })(SystemTypeEnum = WorkerListItem.SystemTypeEnum || (WorkerListItem.SystemTypeEnum = {}));
-})(WorkerListItem = exports.WorkerListItem || (exports.WorkerListItem = {}));
+    })(SystemTypeEnum = Worker.SystemTypeEnum || (Worker.SystemTypeEnum = {}));
+})(Worker = exports.Worker || (exports.Worker = {}));
 /**
  * @export
  * @namespace WorkerMultiEditRequest

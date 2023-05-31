@@ -1,4 +1,4 @@
-import type { WorkerListItem, Farm, WorkerMetric } from './hive';
+import type { Worker, Farm, WorkerMetric } from './hive';
 export type HiveOSAPIErrorMessage = 'Unauthorized';
 export interface HiveOSAPIErrorData {
     code: null;
@@ -32,6 +32,6 @@ export declare class HiveOSAPI {
     request<T>(url?: string, method?: string, params?: object): Promise<T>;
     farms(): Promise<Farm[]>;
     farm(id: number): Promise<Farm>;
-    workers(farm: number): Promise<WorkerListItem[]>;
+    workers(farm: number): Promise<Worker[]>;
     metrics(farm: number, worker: number, params?: MetricsParams): Promise<WorkerMetric[]>;
 }
