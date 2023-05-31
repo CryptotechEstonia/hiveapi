@@ -22,9 +22,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HiveOSAPI = exports.HiveOSAPIError = void 0;
 const axios_1 = __importStar(require("axios"));
+const axios_retry_1 = __importDefault(require("axios-retry"));
 const API_ROOT = 'https://api2.hiveos.farm/api/v2/';
 class HiveOSAPIError extends Error {
     constructor({ code, message }) {
@@ -40,6 +44,12 @@ class HiveOSAPI {
             headers: {
                 'Authorization': `Bearer ${this.token}`,
             },
+        });
+        (0, axios_retry_1.default)(this.apiClient, {
+            retries: 3,
+            retryDelay: (retryCount) => {
+                return retryCount * 1000;
+            }
         });
     }
     async request(url = '/', method = 'GET', params = {}) {
