@@ -14925,22 +14925,6 @@ export interface Worker {
 }
 
 /**
- * @export
- * @namespace Worker
- */
-export namespace Worker {
-	/**
-	 * @export
-	 * @enum {string}
-	 */
-	export enum SystemTypeEnum {
-		Linux = 'linux',
-		Asic = 'asic',
-		Windows = 'windows'
-	}
-}
-
-/**
  * 
  * @export
  * @interface WorkerActive
