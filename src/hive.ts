@@ -2447,6 +2447,8 @@ export interface FanflapStats {
  * @interface Farm
  */
 export interface Farm {
+	id: number
+
 	/**
 	 * Display name
 	 * @type {string}
