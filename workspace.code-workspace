@@ -5,6 +5,6 @@
 		}
 	],
 	"settings": {
-		"window.title": "Cryptotech HiveAPI${separator}${separator}${appName}"
+		"window.title": "Cryptotech HiveAPI${separator}${appName}"
 	}
 }
