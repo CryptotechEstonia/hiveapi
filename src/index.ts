@@ -19637,4 +19637,9 @@ export class HiveOSAPI {
 		return this.request<InlineResponse20028>(`/farms/${farm}/workers/${worker}/metrics`, 'GET', params)
 			.then(result => result.data || [])
 	}
+
+	async wallets(farm: number): Promise<WalletF[]> {
+		return this.request<InlineResponse20032>(`/farms/${farm}/wallets`)
+			.then(result => result.data || [])
+	}
 }

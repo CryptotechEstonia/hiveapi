@@ -741,5 +741,9 @@ class HiveOSAPI {
         return this.request(`/farms/${farm}/workers/${worker}/metrics`, 'GET', params)
             .then(result => result.data || []);
     }
+    async wallets(farm) {
+        return this.request(`/farms/${farm}/wallets`)
+            .then(result => result.data || []);
+    }
 }
 exports.HiveOSAPI = HiveOSAPI;

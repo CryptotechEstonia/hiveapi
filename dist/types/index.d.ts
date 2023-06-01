@@ -17354,4 +17354,5 @@ export declare class HiveOSAPI {
     farm(id: number): Promise<Farm>;
     workers(farm: number): Promise<Worker[]>;
     metrics(farm: number, worker: number, params?: MetricsParams): Promise<WorkerMetric[]>;
+    wallets(farm: number): Promise<WalletF[]>;
 }
