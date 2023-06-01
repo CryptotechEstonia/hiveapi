@@ -12377,6 +12377,7 @@ export interface UserShortInfo {
  * @interface Wallet
  */
 export interface Wallet {
+    id: number;
     /**
      * Coin name
      * @type {string}
