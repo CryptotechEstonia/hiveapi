@@ -12699,6 +12699,7 @@ export interface Worker {
      * @memberof Worker
      */
     farmId?: number;
+    farm_id: number;
     /**
      *
      * @type {Platform}
