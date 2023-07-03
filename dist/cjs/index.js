@@ -710,12 +710,13 @@ class HiveOSAPI {
             }
         });
     }
-    async request(url = '/', method = 'GET', params = {}) {
+    async request(url = '/', method = 'GET', params = {}, data = undefined) {
         try {
             const response = await this.apiClient.request({
                 method: method,
                 url: url,
-                params: params
+                params: params,
+                data: data
             });
             return response.data;
         }

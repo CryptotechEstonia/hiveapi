@@ -4418,6 +4418,8 @@ export interface FarmsfarmIdworkersoverclockNvidia1 {
  * @interface FlightSheet
  */
 export interface FlightSheet {
+	id: number
+	
 	/**
 	 * Display name
 	 * @type {string}
@@ -14605,7 +14607,8 @@ export interface Worker {
 	 * @memberof Worker
 	 */
 	flightSheet?: FSMidInfo
-
+	flight_sheet?: FSMidInfo
+	
 	/**
 	 * 
 	 * @type {WorkerOverclockOverclock}
@@ -19602,12 +19605,13 @@ export class HiveOSAPI {
 		})
 	}
 
-	async request<T>(url: string = '/', method: string = 'GET', params: object = {}): Promise<T> {
+	async request<T>(url: string = '/', method: string = 'GET', params: object = {}, data: any = undefined): Promise<T> {
 		try {
 			const response = await this.apiClient.request<T>({
 				method: method,
 				url: url,
-				params: params
+				params: params,
+				data: data
 			})
 
 			return response.data

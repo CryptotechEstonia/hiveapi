@@ -3922,6 +3922,7 @@ export interface FarmsfarmIdworkersoverclockNvidia1 {
  * @interface FlightSheet
  */
 export interface FlightSheet {
+    id: number;
     /**
      * Display name
      * @type {string}
@@ -12938,6 +12939,7 @@ export interface Worker {
      * @memberof Worker
      */
     flightSheet?: FSMidInfo;
+    flight_sheet?: FSMidInfo;
     /**
      *
      * @type {WorkerOverclockOverclock}
@@ -17350,7 +17352,7 @@ export declare class HiveOSAPI {
     private token;
     private apiClient;
     constructor(token: string);
-    request<T>(url?: string, method?: string, params?: object): Promise<T>;
+    request<T>(url?: string, method?: string, params?: object, data?: any): Promise<T>;
     farms(): Promise<Farm[]>;
     farm(id: number): Promise<Farm>;
     workers(farm: number): Promise<Worker[]>;
